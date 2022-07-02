@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap");
+
+.Main {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  font-family: "Maven Pro", sans-serif;
+  }
+
+.NFT{
+  border: 1px solid #0a0000;
+  border-radius: 45px;
+  background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    width:40%;
+    
+  }
+
+.NFT label{
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+
+  }
+
+  Body{
+    background-image: url(/src/424757.jpg);
+  }
+
+  h3{
+    color: rgb(245, 144, 12);
+
+  }
