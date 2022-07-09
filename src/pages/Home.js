@@ -1,11 +1,10 @@
 
-import NftMarket from "../artifacts/contracts/NftMarket.sol/NftMarket.json";
-
 import "./Home.css";
 import { ethers } from "ethers";
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar.js";
 import {create} from 'ipfs-http-client';
+import NftMarket from "../artifacts/contracts/NftMarket.sol/NftMarket.json";
 
 function Home() {
   let [fileurl,setfileurl]=useState(null);
@@ -14,7 +13,7 @@ function Home() {
   let [description, setdescription] = useState("");
 
   const client=create("https://ipfs.infura.io:5001/");
-  const NftMarketaddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
+  const NftMarketaddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
   
 
 

@@ -16,6 +16,8 @@ function Navbar() {
         <h2>NFT Marakkech</h2>
         <Link to='/'>Home</Link>
         <Link to='/Listing'>Listing</Link>
+        <Link to='/Purchases'>My Purchases</Link>
+
         <button onClick={connect}>CONNECT WALLET</button>
 
       

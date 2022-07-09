@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { ethers } from "ethers";
-import axios from "axios";
-import Navbar from "../Components/Navbar.js";
 import './Listing.css';
+import axios from "axios";
+import { ethers } from "ethers";
+import Navbar from "../Components/Navbar.js";
+import React, { useState, useEffect } from "react";
+
 
 import NftMarket from "../artifacts/contracts/NftMarket.sol/NftMarket.json";
 
-const NftMarketaddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
+const NftMarketaddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
 function Landing() {
   const [nft, setnft] = useState([]);
@@ -42,8 +43,30 @@ function Landing() {
       setrenderState("True");
     }
   }
- if (renderState === "True" && !nft.length)
-    return <h2 className="warning">No NFT Listed</h2>;
+
+  async function buy(item){
+    if (typeof window.ethereum !== "undefined") {
+      let provider = new ethers.providers.Web3Provider(window.ethereum);
+      let signer = provider.getSigner();
+      let market = new ethers.Contract(NftMarketaddress, NftMarket.abi, signer);
+      let price= ethers.utils.parseUnits(item.price.toString(),'ether');
+      let txn= await market.createMarketSale(item.tokenId,{value:price});
+      await txn.wait();
+      ProcureNft();
+
+
+
+
+  }
+}
+if (renderState === "True" && !nft.length){
+return (<div>
+   <Navbar/>
+  <h2 className="warning">No NFT Listed</h2>
+  </div>);
+}
+
+
 
   return (
     <>
@@ -58,6 +81,7 @@ function Landing() {
               <p> {nf.price} Eth</p>
               <img src={nf.image} className="image" alt="NFT"/>
               <p>{nf.description}</p>
+              <button onClick={()=>buy(nf)}>BUY</button>
 
             </div>
           ))}
